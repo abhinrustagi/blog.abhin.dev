@@ -59,11 +59,14 @@ export async function getStaticProps({ params: { slug } }) {
   const markdown = fileContent.content;
 
   return {
-    props: { frontmatter, markdown },
-    seo: {
-      title: frontmatter.title,
-      desc: frontmatter.desc,
-      img: frontmatter.thumbnail,
+    props: {
+      frontmatter,
+      markdown,
+      seo: {
+        title: frontmatter.title,
+        desc: frontmatter.desc,
+        img: frontmatter.thumbnail,
+      },
     },
   };
 }
