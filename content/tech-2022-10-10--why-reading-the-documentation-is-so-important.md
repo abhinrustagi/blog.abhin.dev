@@ -1,15 +1,17 @@
 ---
-type: tech
+type: Tech
 title: Why is reading the documentation so important?
 date: 17 Nov 2021
 thumbnail: https://miro.medium.com/max/720/1*KdnkPIkbpNKocf9TNsTOSw.jpeg
+desc: A small example to create a custom useTimer Hook for React Applications to responsibly get around the mischievous setInterval function.
 availableOn:
   - platform: Medium
     src: https://javascript.plainenglish.io/why-is-reading-the-documentation-so-important-5cf50bab0c9f
 ---
+
 Quite often the process of writing code (especially while using a certain library) goes like this: *write code, encounter error, modify code, encounter error, go to StackOverflow, copy code, run code, repeat*.
 
-I recently came across the acronym **“RTFM”** which literally stands for ‘Reading the f*cking manual’. I realized as simple as the acronym is, it is equally very true, and a great piece of advice offered to me by a senior developer.
+I recently came across the acronym **“RTFM”** which literally stands for ‘Reading the f\*cking manual’. I realized as simple as the acronym is, it is equally very true, and a great piece of advice offered to me by a senior developer.
 
 Reading the documentation has been the most missing step in every developer’s journey early on. No online course or module ever explicitly mentions that the course-takers should actually take time to read the documentation of the technology they are using.
 

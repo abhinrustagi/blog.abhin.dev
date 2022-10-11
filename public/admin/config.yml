@@ -20,7 +20,7 @@ collections:
       - label: "Type"
         name: "type"
         widget: "select"
-        options: ["tech", "poetry", "cricket", "coffee", "miscellaneous"]
+        options: ["Tech", "Poetry", "Cricket", "Coffee", "Miscellaneous"]
       - label: "Title"
         name: "title"
         widget: "string"
@@ -32,6 +32,9 @@ collections:
         name: "thumbnail"
         widget: "image"
         choose_url: true
+      - label: "Description"
+        name: desc
+        widget: "string"
       - label: "Available on"
         name: "availableOn"
         widget: "list"

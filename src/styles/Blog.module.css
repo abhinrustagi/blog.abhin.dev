@@ -19,6 +19,7 @@
 
 .wrapper ul,
 .wrapper ol {
+  list-style: circle;
   padding-left: 3rem;
 }
 

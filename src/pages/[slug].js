@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/jsx-no-comment-textnodes */
 import fs from "fs";
 import ReactMarkdown from "react-markdown";
@@ -15,9 +16,8 @@ const icons = {
 export default function Blog({ frontmatter, markdown }) {
   return (
     <Container size="sm" className="my-20">
-      <p className="text-lg font-medium mb-5">
-        {frontmatter.type} <span className="inline-block mx-4">//</span>{" "}
-        {frontmatter.date}
+      <p className="text-md font-bold font-mono mb-5 text-gray-400">
+        {[frontmatter.date, frontmatter.type].join("  •   ")}
       </p>
 
       <h1 className="text-4xl leading-normal font-bold">{frontmatter.title}</h1>
@@ -41,6 +41,11 @@ export default function Blog({ frontmatter, markdown }) {
           </ul>
         </div>
       )}
+      <img
+        src={frontmatter.thumbnail}
+        alt={frontmatter.slug}
+        className="my-10 block rounded-md"
+      />
       <div className={styles.wrapper}>
         <ReactMarkdown>{markdown}</ReactMarkdown>
       </div>
@@ -55,6 +60,11 @@ export async function getStaticProps({ params: { slug } }) {
 
   return {
     props: { frontmatter, markdown },
+    seo: {
+      title: frontmatter.title,
+      desc: frontmatter.desc,
+      img: frontmatter.thumbnail,
+    },
   };
 }
 

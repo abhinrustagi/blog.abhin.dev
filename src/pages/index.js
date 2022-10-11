@@ -2,7 +2,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 import Link from "next/link";
-import { Container } from "components/Container";
+import { Container, Card } from "components";
 
 export default function Home({ blogs }) {
   return (
@@ -13,23 +13,14 @@ export default function Home({ blogs }) {
           <br />
           This is my writing space.
         </h1>
-        <p className="mt-7 mb-16">
+        <p className="mt-7">
           This is my brief corner on the internet to share my thoughts, views
           and information on various things I find interesting.
         </p>
-        <ul>
+        <ul className="my-16">
           {blogs.map((blog) => (
             <li key={blog.slug}>
-              <Link href={`/${blog.slug}`}>
-                <a>
-                  <img
-                    src={blog.thumbnail}
-                    alt={blog.slug}
-                    title={blog.title}
-                  />
-                  {blog.title}
-                </a>
-              </Link>
+              <Card {...blog} />
             </li>
           ))}
         </ul>
