@@ -9,19 +9,17 @@ export const defaultSeoConfig = {
 };
 
 export const buildSeoConfig = (props) => {
-  const { title, img, desc, path } = props;
-
   let config = {};
 
-  if (title) config = { ...config, title };
-  if (desc) config = { ...config, description: desc };
-  if (img)
+  if (props.title) config = { ...config, title: props.title };
+  if (props.desc) config = { ...config, description: props.desc };
+  if (props.img)
     config = {
       ...config,
-      openGraph: { images: [{ url: img, width: 800, height: 600 }] },
+      openGraph: { images: [{ url: props.img, width: 800, height: 600 }] },
     };
-  if (path) {
-    const url = process.env.BASE_URL + path;
+  if (props.path) {
+    const url = process.env.BASE_URL + props.path;
 
     config = {
       ...config,
