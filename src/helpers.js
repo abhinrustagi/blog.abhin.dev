@@ -11,14 +11,15 @@ export const defaultSeoConfig = {
 export const buildSeoConfig = (props) => {
   let config = {};
 
-  if (props.title) config = { ...config, title: props.title };
-  if (props.desc) config = { ...config, description: props.desc };
-  if (props.img)
+  if (props.hasOwnProperty("title")) config = { ...config, title: props.title };
+  if (props.hasOwnProperty("desc"))
+    config = { ...config, description: props.desc };
+  if (props.hasOwnProperty("img"))
     config = {
       ...config,
       openGraph: { images: [{ url: props.img, width: 800, height: 600 }] },
     };
-  if (props.path) {
+  if (props.hasOwnProperty("path")) {
     const url = process.env.BASE_URL + props.path;
 
     config = {

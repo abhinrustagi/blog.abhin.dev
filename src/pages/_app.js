@@ -4,7 +4,11 @@ import { DefaultSeo, NextSeo } from "next-seo";
 import "styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  const seoConfig = buildSeoConfig(pageProps.seo);
+  let seoConfig = {};
+
+  if (pageProps.hasOwnProperty("seo")) {
+    seoConfig = buildSeoConfig(pageProps.seo);
+  }
 
   return (
     <>
