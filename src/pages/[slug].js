@@ -66,6 +66,7 @@ export async function getStaticProps({ params: { slug } }) {
         title: frontmatter.title,
         desc: frontmatter.desc,
         img: frontmatter.thumbnail,
+        path: `/${slug}`,
       },
     },
   };

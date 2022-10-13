@@ -47,6 +47,10 @@ export async function getStaticProps() {
   return {
     props: {
       blogs,
+      seo: {
+        desc: "This is my brief corner on the internet to share my thoughts, views and information on various things I find interesting.",
+        path: "/",
+      },
     },
   };
 }
