@@ -1,5 +1,5 @@
 export const Container = ({ size = "lg", className, ...props }) => {
-  const width = size === "lg" ? "max-w-4xl" : "max-w-2xl";
+  const width = size === "lg" ? "max-w-5xl" : "max-w-2xl";
 
   return (
     <div

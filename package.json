@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "dayjs": "^1.11.7",
+    "graphql": "^16.6.0",
+    "graphql-request": "^5.0.0",
     "gray-matter": "^4.0.3",
     "next": "11.1.0",
     "next-seo": "^5.5.0",

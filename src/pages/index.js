@@ -1,56 +1,37 @@
-/* eslint-disable @next/next/no-img-element */
-import fs from "fs";
-import matter from "gray-matter";
-import Link from "next/link";
-import { Container, Card } from "components";
+import { gql, GraphQLClient } from "graphql-request";
+import { HYGRAPH_API_URL } from "constant";
+import React from "react";
+import Home from "components/pages/Home";
 
-export default function Home({ blogs }) {
-  return (
-    <main>
-      <Container className="my-20">
-        <h1 className="text-4xl font-bold leading-normal">
-          Hi, I&apos;m Abhin!
-          <br />
-          This is my writing space.
-        </h1>
-        <p className="mt-7">
-          This is my brief corner on the internet to share my thoughts, views
-          and information on various things I find interesting.
-        </p>
-        <ul className="my-16">
-          {blogs.map((blog) => (
-            <li key={blog.slug}>
-              <Card {...blog} />
-            </li>
-          ))}
-        </ul>
-      </Container>
-    </main>
-  );
+export default function HomePage(props) {
+  return <Home posts={props.posts} />;
 }
 
-export async function getStaticProps() {
-  // List of files in blogs folder
-  const filesInBlogs = fs.readdirSync("./content");
+export async function getServerSideProps() {
+  const requestClient = new GraphQLClient(HYGRAPH_API_URL);
 
-  // Get the front matter and slug (the filename without .md) of all files
-  const blogs = filesInBlogs.map((filename) => {
-    const file = fs.readFileSync(`./content/${filename}`, "utf8");
-    const matterData = matter(file);
+  const query = gql`
+    query Posts {
+      posts(orderBy: date_DESC) {
+        id
+        title
+        slug
+        date
+        content
+        coverImage {
+          id
+          url
+        }
+        tags
+      }
+    }
+  `;
 
-    return {
-      ...matterData.data, // matterData.data contains front matter
-      slug: filename.slice(0, filename.indexOf(".")),
-    };
-  });
+  const contentData = await requestClient.request(query);
 
   return {
     props: {
-      blogs,
-      seo: {
-        desc: "This is my brief corner on the internet to share my thoughts, views and information on various things I find interesting.",
-        path: "/",
-      },
+      posts: contentData.posts,
     },
   };
 }

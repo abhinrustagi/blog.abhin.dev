@@ -1,7 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["miro.medium.com"],
+    domains: ["media.graphassets.com"],
   },
   env: {
     BASE_URL: "https://blog.abhin.dev",
