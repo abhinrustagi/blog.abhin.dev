@@ -23,7 +23,7 @@ export default function Home({ posts }) {
               <li className="overflow-hidden w-full lg:w-1/3 md:w-1/2 p-3">
                 <Link href={`/posts/${post.slug}`} passHref>
                   <a className="cursor-pointer flex flex-col">
-                    <div className="relative min-h-[12rem] rounded-lg overflow-hidden">
+                    <div className="relative min-h-[16rem] rounded-lg overflow-hidden">
                       <Image
                         src={post.coverImage.url || ""}
                         alt=""
@@ -31,19 +31,18 @@ export default function Home({ posts }) {
                         objectFit="cover"
                       />
                     </div>
-                    <h3 className="font-bold text-xl mt-4">{post.title}</h3>
-                    <p className="text-normal my-3">{post.excerpt}</p>
-                    <p className="text-sm">{post.date}</p>
                   </a>
                 </Link>
+                <Link href={`/posts/${post.slug}`} passHref>
+                  <a>
+                    <h3 className="font-bold text-xl mt-4">{post.title}</h3>
+                  </a>
+                </Link>
+                <p className="text-normal my-3">{post.excerpt}</p>
+                <p className="text-sm">{post.date}</p>
               </li>
             </React.Fragment>
           ))}
-          {/* <div>
-          <ReactMarkdown className={styles.wrapper}>
-            {props?.contentData.posts[0].content}
-          </ReactMarkdown>
-        </div> */}
         </ul>
       </Container>
     </main>

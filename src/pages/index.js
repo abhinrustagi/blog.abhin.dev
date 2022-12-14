@@ -2,6 +2,7 @@ import { gql, GraphQLClient } from "graphql-request";
 import { HYGRAPH_API_URL } from "constant";
 import React from "react";
 import Home from "components/pages/Home";
+import dayjs from "dayjs";
 
 export default function HomePage(props) {
   return <Home posts={props.posts} />;
@@ -29,9 +30,14 @@ export async function getServerSideProps() {
 
   const contentData = await requestClient.request(query);
 
+  const posts = contentData.posts?.map((post) => ({
+    ...post,
+    date: dayjs(post.date).format("D MMMM YY"),
+  }));
+
   return {
     props: {
-      posts: contentData.posts,
+      posts,
     },
   };
 }
